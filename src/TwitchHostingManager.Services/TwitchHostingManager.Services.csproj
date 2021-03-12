@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>TaleLearnCode.TwitchHostingManager.Services</AssemblyName>
+    <RootNamespace>TaleLearnCode.TwitchHostingManager</RootNamespace>
+    <Version>0.0.0-pre</Version>
+    <Authors>TaleLearnCode</Authors>
+    <Company>Green Events &amp; Technology</Company>
+    <Product>TaleLearnCode Twitch Hosting Manager</Product>
+    <Copyright>Copyright 2021</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Data.Tables" Version="12.0.0-beta.6" />
+    <PackageReference Include="TwitchLib" Version="3.2.0" />
+  </ItemGroup>
+
+</Project>
