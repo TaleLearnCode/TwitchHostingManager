@@ -2,6 +2,9 @@
 using System;
 using System.Linq;
 using TaleLearnCode.TwitchHostingManager.Domain;
+using TaleLearnCode.TwitchHostingManager.Helpers;
+using TwitchLib.Client;
+using TwitchLib.Client.Models;
 
 namespace TaleLearnCode.TwitchHostingManager.Services
 {
@@ -65,6 +68,18 @@ namespace TaleLearnCode.TwitchHostingManager.Services
 				.Query<Channel>(t => t.PartitionKey == userId && t.RowKey == channelName && (includeDeleted || t.IsDeleted == false))
 				.SingleOrDefault();
 
+		}
+
+		public void HostChannel(string channel, string channelToHost)
+		{
+			TwitchBot twitchBot = new TwitchBot(channel);
+			twitchBot.SendMessage($".host {channelToHost}");
+		}
+
+		private string GetAccessToken(string channel)
+		{
+			// TODO: Get the access token from Key Vault
+			return Environment.GetEnvironmentVariable($"TwitchAccessToken_{channel}");
 		}
 
 	}

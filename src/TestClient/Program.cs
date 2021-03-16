@@ -18,7 +18,18 @@ namespace TestClient
 			IChannelServices channelServices = new ChannelServices(AzureStorageHelper.GetTableClient(azureStorageSettings, "channels"));
 
 
-			RemoveChannel(channelServices);
+			HostChannel(channelServices);
+			//Console.WriteLine("Hosted channel");
+			//Console.ReadLine();
+
+			//TwitchBot twitchBot = new("thelegomaestro");
+			////Console.WriteLine("Hit enter to send message");
+			////Console.ReadLine();
+			//twitchBot.SendMessage("Does this work now?");
+			////Console.ReadLine();
+			////Console.WriteLine("Done");
+
+
 		}
 
 
@@ -32,6 +43,11 @@ namespace TestClient
 		{
 			channelServices.RemoveChannel("chad.green@talelearncode.com", "TaleLearnCode");
 			Console.WriteLine("Channel removed");
+		}
+
+		static void HostChannel(IChannelServices channelServices)
+		{
+			channelServices.HostChannel("thelegomaestro", "talelearncode");
 		}
 
 

@@ -7,5 +7,7 @@ namespace TaleLearnCode.TwitchHostingManager.Services
 		void AddChannel(string userId, string channelName, int sortOrder);
 		Channel GetChannel(string userId, string channelName, bool includeDeleted);
 		void RemoveChannel(string userId, string channelName);
+
+		void HostChannel(string userId, string channelName);
 	}
 }
