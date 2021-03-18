@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using TwitchLib.Client;
 using TwitchLib.Client.Events;
 using TwitchLib.Client.Models;
@@ -14,10 +13,10 @@ namespace TaleLearnCode.TwitchHostingManager.Helpers
 
 		private bool _joinedChannel;
 
-		public TwitchBot(string destinationChannel)
+		public TwitchBot(string destinationChannel, string accessToken)
 		{
 			_destinationChannel = destinationChannel;
-			ConnectionCredentials credentials = new ConnectionCredentials(destinationChannel, Environment.GetEnvironmentVariable("TwitchAccessToken_TLCOperator"));
+			ConnectionCredentials credentials = new ConnectionCredentials(destinationChannel, accessToken);
 			_twitchClient.OnMessageSent += TwitchClient_OnMessageSent;
 			_twitchClient.OnJoinedChannel += TwitchClient_OnJoinedChannel;
 			_twitchClient.Initialize(credentials, _destinationChannel);

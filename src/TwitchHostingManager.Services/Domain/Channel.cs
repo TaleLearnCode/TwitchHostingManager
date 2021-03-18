@@ -15,6 +15,7 @@ namespace TaleLearnCode.TwitchHostingManager.Domain
 
 		public string UserId { get; set; } // Partition Key
 		public string ChannelName { get; set; } // Row Key
+		public string ChannelId { get; set; }
 		public int SortOrder { get; set; }
 		public bool IsDeleted { get; set; } = false;
 
