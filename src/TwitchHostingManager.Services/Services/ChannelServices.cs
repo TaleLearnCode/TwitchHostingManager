@@ -90,6 +90,12 @@ namespace TaleLearnCode.TwitchHostingManager.Services
 			return Environment.GetEnvironmentVariable($"TwitchAccessToken_{channel}");
 		}
 
+		public async Task<string> GetChannelStatusAsync(string channelName)
+		{
+			var channel = await _twitchAPI.V5.Channels.GetChannelByIDAsync(await GetChannelId(channelName));
+			return channel.Status;
+		}
+
 
 		public Task<bool> IsChannelBroadcasting(string channelId)
 		{
@@ -130,9 +136,29 @@ namespace TaleLearnCode.TwitchHostingManager.Services
 
 			// TODO: Better handling for 404 errors
 
-			return _tableClient
+			var results = _tableClient
 				.Query<Domain.Channel>(t => t.PartitionKey == userId && (includeDeleted || t.IsDeleted == false))
 				.ToList();
+
+			results.Sort(delegate (Domain.Channel x, Domain.Channel y)
+			{
+				if (x.SortOrder == null && y.SortOrder == null) return 0;
+				else if (x.SortOrder == null) return -1;
+				else if (y.SortOrder == null) return 1;
+				else if (x.SortOrder > y.SortOrder) return 1;
+				else return -1;
+			});
+
+			return results;
+
+			//parts.Sort(delegate (Part x, Part y)
+			//{
+			//	if (x.PartName == null && y.PartName == null) return 0;
+			//	else if (x.PartName == null) return -1;
+			//	else if (y.PartName == null) return 1;
+			//	else return x.PartName.CompareTo(y.PartName);
+			//});
+
 		}
 	}
 

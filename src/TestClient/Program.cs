@@ -40,7 +40,13 @@ namespace TestClient
 			////Console.ReadLine();
 			////Console.WriteLine("Done");
 
-			await AddChannelAsync(channelServices);
+			//await AddChannelAsync(channelServices);
+
+			//await GetChannelStatus(channelServices);
+
+			//await AddChannelAsync(channelServices);
+
+			GetChannels(channelServices);
 
 
 
@@ -49,7 +55,9 @@ namespace TestClient
 
 		static async Task AddChannelAsync(IChannelServices channelServices)
 		{
-			await channelServices.AddChannelAsync("chad.green@talelearncode.com", "codewithsean", 10);
+			await channelServices.AddChannelAsync("thelegomaestro", "codewithsean", 10);
+			await channelServices.AddChannelAsync("thelegomaestro", "talelearncode", 20);
+			await channelServices.AddChannelAsync("thelegomaestro", "callowcreation", 30);
 			Console.WriteLine("Channel added");
 		}
 
@@ -76,6 +84,20 @@ namespace TestClient
 			foreach (var team in teams)
 			{
 				Console.WriteLine(team.DisplayName);
+			}
+		}
+
+		static async Task GetChannelStatus(IChannelServices channelServices)
+		{
+			Console.WriteLine(await channelServices.GetChannelStatusAsync("thelegomaestro"));
+		}
+
+		static void GetChannels(IChannelServices channelServices)
+		{
+			var list = channelServices.GetChannels("thelegomaestro", false);
+			foreach (var item in list)
+			{
+				Console.WriteLine(item.ChannelName);
 			}
 		}
 

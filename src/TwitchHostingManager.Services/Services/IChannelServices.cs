@@ -20,6 +20,8 @@ namespace TaleLearnCode.TwitchHostingManager.Services
 
 		Task<TwitchLib.Api.V5.Models.Teams.Team[]> GetTwitchChannelTeams(string channelId);
 
+		Task<string> GetChannelStatusAsync(string channelName);
+
 	}
 
 }
