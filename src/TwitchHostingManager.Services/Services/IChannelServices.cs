@@ -12,7 +12,7 @@ namespace TaleLearnCode.TwitchHostingManager.Services
 		void RemoveChannel(string userId, string channelName);
 		List<Channel> GetChannels(string userId, bool includeDeleted);
 
-		void HostChannel(string userId, string channelName);
+		void HostChannel(string channel, string channelToHost);
 
 		Task<bool> IsChannelBroadcasting(string channelId);
 

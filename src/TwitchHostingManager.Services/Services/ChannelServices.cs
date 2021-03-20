@@ -81,8 +81,7 @@ namespace TaleLearnCode.TwitchHostingManager.Services
 		public void HostChannel(string channel, string channelToHost)
 		{
 			TwitchBot twitchBot = new TwitchBot(channel, GetAccessToken(channel));
-			//twitchBot.SendMessage($".host {channelToHost}");
-			twitchBot.SendMessage("Still work?");
+			twitchBot.SendMessage($".host {channelToHost}");
 		}
 
 		private string GetAccessToken(string channel)
