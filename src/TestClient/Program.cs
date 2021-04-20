@@ -42,11 +42,11 @@ namespace TestClient
 
 			//await AddChannelAsync(channelServices);
 
-			//await GetChannelStatus(channelServices);
+			await GetChannelStatus(channelServices);
 
 			//await AddChannelAsync(channelServices);
 
-			GetChannels(channelServices);
+			//GetChannels(channelServices);
 
 
 
